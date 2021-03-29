@@ -1,4 +1,6 @@
 import os
+import getpass
+
 filesList=[]
 
 for root, dirs, files in os.walk('commands'):
@@ -9,6 +11,7 @@ for root, dirs, files in os.walk('commands'):
 
 for file in filesList:
     if file[-3:] == '.py':
-        print('Building {0}...\n'.format(file))
-        os.system('cmd /c pyinstaller --onefile C:\\Users\\xacc\\Desktop\\TermCommands\\commands\\{0}'.format(file))
-        print('{0} is now compiled!'.format(file))
+        print('\nBuilding {0}...\n'.format(file))
+        ## Add path to scripts here: 
+        os.system('cmd /c pyinstaller --onefile C:\\Users\\{0}\\Desktop\\TermCommands\\Terminal-Commands\\commands\\{1}'.format(getpass.getuser(), file))
+        print('{0} is now compiled!\n'.format(file))
